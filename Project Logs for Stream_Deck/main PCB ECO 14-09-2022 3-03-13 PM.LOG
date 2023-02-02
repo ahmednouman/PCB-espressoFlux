@@ -1,0 +1,10 @@
+Removed Member From Class: ClassName=ESP32-PICO-D4-MCU Member=R20
+Change Class Name : Old Net Name=Debugger-reset New Net Name=RESET-SWITCHES
+Change Class Name : Old Net Name=POWER-REG New Net Name=SERIAL-CHIP
+Change Class Name : Old Net Name=POWER_REG_SELECT New Net Name=POWER-BATTERY
+Added Member To Class: ClassName=ESP32-PICO-D4-MCU Member=Component R16 0R
+Added Member To Class: ClassName=POWER-BATTERY Member=Component R20 442k
+Added Room: Name=ESP32-PICO-D4-MCU
+Added Room: Name=POWER-BATTERY
+Added Room: Name=RESET-SWITCHES
+Added Room: Name=SERIAL-CHIP

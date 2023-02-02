@@ -1,0 +1,11 @@
+Replace Part ANT1 ANT_2.45GHz_Bluetooth_WLAN_Zigbee_1.7dBi_NN01-102 in C:\Espresso\PCB Design\Stream Deck\Design Files\Stream_Deck_03\ESP32-PICO-D4-MCU.SchDoc with ANT_2.45GHz_Bluetooth_WLAN_Zigbee_1.7dBi_NN01-102 from NOUMANPCBLIB.IntLib
+Replace Part C4 CAP_0.1uF-50V-10%-0805 in C:\Espresso\PCB Design\Stream Deck\Design Files\Stream_Deck_03\ESP32-PICO-D4-MCU.SchDoc with CAP_0.1uF-50V-10%-0805 from NOUMANPCBLIB.IntLib
+Replace Part C5 CAP_0.1uF-50V-10%-0805 in C:\Espresso\PCB Design\Stream Deck\Design Files\Stream_Deck_03\ESP32-PICO-D4-MCU.SchDoc with CAP_0.1uF-50V-10%-0805 from NOUMANPCBLIB.IntLib
+Replace Part C6 CAP_1uF-50V-10%-0805_1 in C:\Espresso\PCB Design\Stream Deck\Design Files\Stream_Deck_03\ESP32-PICO-D4-MCU.SchDoc with CAP_1uF-50V-10%-0805_1 from NOUMANPCBLIB.IntLib
+Replace Part C7 CAP_0.1uF-50V-10%-0805 in C:\Espresso\PCB Design\Stream Deck\Design Files\Stream_Deck_03\ESP32-PICO-D4-MCU.SchDoc with CAP_0.1uF-50V-10%-0805 from NOUMANPCBLIB.IntLib
+Replace Part DS1 LED_BLUE-3V3-20mA-0805 in C:\Espresso\PCB Design\Stream Deck\Design Files\Stream_Deck_03\ESP32-PICO-D4-MCU.SchDoc with LED_BLUE-3V3-20mA-0805 from NOUMANPCBLIB.IntLib
+Replace Part R2 RES_10K-0.125W-1%-0805 in C:\Espresso\PCB Design\Stream Deck\Design Files\Stream_Deck_03\ESP32-PICO-D4-MCU.SchDoc with RES_10K-0.125W-1%-0805 from NOUMANPCBLIB.IntLib
+Replace Part R3 RES_100R-0.125W-1%-0805 in C:\Espresso\PCB Design\Stream Deck\Design Files\Stream_Deck_03\ESP32-PICO-D4-MCU.SchDoc with RES_100R-0.125W-1%-0805 from NOUMANPCBLIB.IntLib
+Replace Part S2 Button Tactile Switch, NO 0.05 A 0.8mm in C:\Espresso\PCB Design\Stream Deck\Design Files\Stream_Deck_03\ESP32-PICO-D4-MCU.SchDoc with Button Tactile Switch, NO 0.05 A 0.8mm from Omron Tactile Switches.SchLib
+Replace Part U3 RAM_LY68L6400 in C:\Espresso\PCB Design\Stream Deck\Design Files\Stream_Deck_03\ESP32-PICO-D4-MCU.SchDoc with RAM_LY68L6400 from IC_Espressif_Systems_ESP32-PICO-D4_eec.SchLib
+Replace Part U4 ESP32-PICO-D4 in C:\Espresso\PCB Design\Stream Deck\Design Files\Stream_Deck_03\ESP32-PICO-D4-MCU.SchDoc with ESP32-PICO-D4 from IC_Espressif_Systems_ESP32-PICO-D4_eec.SchLib

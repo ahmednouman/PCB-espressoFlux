@@ -1,0 +1,32 @@
+Change Component Comment : Designator=R20 Old Comment=1.5K New Comment=160k
+Change Component Comment : Designator=R16 Old Comment=4.7K New Comment=442k
+Change Component Designator: OldDesignator=BAT NewDesignator=J2
+Change Component Designator: OldDesignator=R16 NewDesignator=R20
+Change Component Designator: OldDesignator=R20 NewDesignator=R21
+Change component parameters: Designator = "R16" ("R20"); Footprint = "RES_0805"; UniqueID = "\PDEBLAXU" ("\PDEBLAXU")
+Change component parameters (AddParameter): Name = "Alternate Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Case/Package"; Value = "0805"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "TE Connectivity Passive Product"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer Part Number"; Value = "CRG0805F1K5"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier-1"; Value = "SIRICOM"; VariantName = "[No Variations]"
+Added Component: Designator=R16(RES_0805)
+Add component (AddParameter): Name = "Alternate Part Number-1"; Value = "WR08X000PTL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "0805"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Walsin"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "WR08X000PTL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number-1"; Value = "WR08X000PTL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier-1"; Value = "SIRICOM"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetC2_2 Pin=R16-1
+Change Net Name : Old Net Name=NetR16_1 New Net Name=NetR20_1
+Added Pin To Net: NetName=NetR16_2 Pin=R16-2
+Added Pin To Net: NetName=NetR16_2 Pin=U4-19
+Added Net: Name=NetR16_2
+Added Member To Class: ClassName=POWER_REG_SELECT Member=Component J2 BERSTICK 2.5MM, MALE
+Added Member To Class: ClassName=ESP32-PICO-D4-MCU Member=Component R16 0R
+Added Member To Class: ClassName=POWER_REG_SELECT Member=Component R20 442k
+Added Member To Class: ClassName=POWER_REG_SELECT Member=Component R21 160k
+Added Room: Name=Debugger-reset
+Added Room: Name=ESP32-PICO-D4-MCU
+Added Room: Name=POWER-REG
+Added Room: Name=POWER_REG_SELECT

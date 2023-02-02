@@ -1,0 +1,10 @@
+Change Component Library : Designator=S3 Old Library=NOUMANPCBLIB.IntLib New Library=NOUMANPCBLIB.SchLib
+Change Component Library : Designator=S4 Old Library=NOUMANPCBLIB.IntLib New Library=NOUMANPCBLIB.SchLib
+Change Component Library : Designator=S5 Old Library=NOUMANPCBLIB.IntLib New Library=NOUMANPCBLIB.SchLib
+Change Component Library : Designator=S6 Old Library=NOUMANPCBLIB.IntLib New Library=NOUMANPCBLIB.SchLib
+Change Component Library : Designator=S7 Old Library=NOUMANPCBLIB.IntLib New Library=NOUMANPCBLIB.SchLib
+Change Component Library : Designator=S8 Old Library=NOUMANPCBLIB.IntLib New Library=NOUMANPCBLIB.SchLib
+Added Room: Name=ESP32-PICO-D4-MCU
+Added Room: Name=POWER-BATTERY
+Added Room: Name=RESET-SWITCHES
+Added Room: Name=SERIAL-CHIP

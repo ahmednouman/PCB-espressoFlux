@@ -1,0 +1,5 @@
+Replace Part C1 CAP_0.1uF-50V-10%-0805 in C:\Espresso\PCB Design\Stream Deck\Design Files\Stream_Deck_03\POWER-REG.SchDoc with CAP_0.1uF-50V-10%-0805 from NOUMANPCBLIB.IntLib
+Replace Part J1 CON_USB_C_USB2.0_USB4105-GF-A in C:\Espresso\PCB Design\Stream Deck\Design Files\Stream_Deck_03\POWER-REG.SchDoc with CON_USB_C_USB2.0_USB4105-GF-A from NOUMANPCBLIB.IntLib
+Replace Part R4 RES_5.1K-0.125W-1%-0805 in C:\Espresso\PCB Design\Stream Deck\Design Files\Stream_Deck_03\POWER-REG.SchDoc with RES_5.1K-0.125W-1%-0805 from NOUMANPCBLIB.IntLib
+Replace Part R5 RES_5.1K-0.125W-1%-0805 in C:\Espresso\PCB Design\Stream Deck\Design Files\Stream_Deck_03\POWER-REG.SchDoc with RES_5.1K-0.125W-1%-0805 from NOUMANPCBLIB.IntLib
+Replace Part U2 IC_CP2104-F03-GM in C:\Espresso\PCB Design\Stream Deck\Design Files\Stream_Deck_03\POWER-REG.SchDoc with IC_CP2104-F03-GM from NOUMANPCBLIB.IntLib

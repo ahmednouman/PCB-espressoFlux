@@ -1,0 +1,142 @@
+Removed Pin From Net: NetName=Net*_1 Pin=C1-2
+Removed Pin From Net: NetName=GND Pin=S3-2
+Removed Pin From Net: NetName=Net*_1 Pin=U2-7
+Removed Member From Class: ClassName=RESET-SWITCHES Member=S3
+Change Component Footprint: Designator=S3 Old Footprint=Button8014X17N New Footprint=CAP_0805
+Change Component Comment : Designator=C7 Old Comment=0.1uF New Comment=1uF
+Change Component Comment : Designator=S3 Old Comment=Button Tactile Switch, NO 0.05 A 0.8mm New Comment=0.1uF
+Change Component Designator: OldDesignator=C7 NewDesignator=C11
+Change Component Designator: OldDesignator=S3 NewDesignator=C12
+Change component parameters: Designator = "S3" ("C12"); Footprint = "Button8014X17N"; UniqueID = "\JALQLZHE" ("\JALQLZHE")
+Change component parameters (AddParameter): Name = "Alternate Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Case/Package"; Value = "0805"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Samsung"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer Part Number"; Value = "CL21B104KBCNNNC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier Part Number-1"; Value = "0805B104K500CT"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier-1"; Value = "SIRICOM"; VariantName = "[No Variations]"
+Added Component: Designator=C7(CAP_0805)
+Add component (AddParameter): Name = "Alternate Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "0805"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Samsung"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "CL21B104KBCNNNC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number-1"; Value = "0805B104K500CT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier-1"; Value = "SIRICOM"; VariantName = "[No Variations]"
+Added Component: Designator=C13(CAP_0805)
+Add component (AddParameter): Name = "Alternate Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "0805"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Samsung"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "CL21B104KBCNNNC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number-1"; Value = "0805B104K500CT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier-1"; Value = "SIRICOM"; VariantName = "[No Variations]"
+Added Component: Designator=C14(CAP_0805)
+Add component (AddParameter): Name = "Alternate Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "0805"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Samsung"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "CL21B104KBCNNNC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number-1"; Value = "0805B104K500CT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier-1"; Value = "SIRICOM"; VariantName = "[No Variations]"
+Added Component: Designator=C15(CAP_0805)
+Add component (AddParameter): Name = "Alternate Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "0805"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Samsung Electro-Mechanics"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "CL21B104MBCNNNC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number-1"; Value = "0805B104K500CT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier-1"; Value = "SIRICOM"; VariantName = "[No Variations]"
+Added Component: Designator=C16(CAP_0805)
+Add component (AddParameter): Name = "Alternate Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "0805"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Samsung"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "CL21B104KBCNNNC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number-1"; Value = "0805B104K500CT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier-1"; Value = "SIRICOM"; VariantName = "[No Variations]"
+Added Component: Designator=C17(CAP_0805)
+Add component (AddParameter): Name = "Alternate Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "0805"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Samsung"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "CL21B104KBCNNNC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number-1"; Value = "0805B104K500CT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier-1"; Value = "SIRICOM"; VariantName = "[No Variations]"
+Add Component: Footprint Not Found Murata_LXES15_IPC_A
+Add Component: Footprint Not Found Murata_LXES15_IPC_A
+Added Component: Designator=R22(RES_0805)
+Add component (AddParameter): Name = "Alternate Part Number-1"; Value = "WR08X1002FTL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "0805"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "CTS"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "WR08X1002FTL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number-1"; Value = "WR08X1002FTL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier-1"; Value = "SIRICOM"; VariantName = "[No Variations]"
+Added Component: Designator=R23(RES_0805)
+Add component (AddParameter): Name = "Alternate Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "0805"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Yageo"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "RT0805FRE07510RL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number-1"; Value = "WR08X5100FTL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier-1"; Value = "SIRICOM"; VariantName = "[No Variations]"
+Add Component: Footprint Not Found C&K_0_MFG
+Added Pin To Net: NetName=NetC2_2 Pin=C1-2
+Added Pin To Net: NetName=GND Pin=C7-1
+Added Pin To Net: NetName=NetC2_2 Pin=C7-2
+Added Pin To Net: NetName=NetC2_2 Pin=C11-2
+Added Pin To Net: NetName=GND Pin=C12-1
+Added Pin To Net: NetName=NetC2_2 Pin=C12-2
+Added Pin To Net: NetName=GND Pin=C13-1
+Added Pin To Net: NetName=NetC2_2 Pin=C13-2
+Added Pin To Net: NetName=GND Pin=C14-1
+Added Pin To Net: NetName=NetC2_2 Pin=C14-2
+Added Pin To Net: NetName=GND Pin=C15-1
+Added Pin To Net: NetName=NetR20_1 Pin=C15-2
+Added Pin To Net: NetName=GND Pin=C16-1
+Added Pin To Net: NetName=NetC2_2 Pin=C16-2
+Added Pin To Net: NetName=GND Pin=C17-1
+Added Pin To Net: NetName=NetC2_2 Pin=C17-2
+Add Pin To Net: Unknown Pin: Pin D2-1
+Add Pin To Net: Unknown Pin: Pin D2-2
+Add Pin To Net: Unknown Pin: Pin D3-1
+Add Pin To Net: Unknown Pin: Pin D3-2
+Added Pin To Net: NetName=GPIO10 Pin=R22-1
+Added Pin To Net: NetName=NetC2_2 Pin=R22-2
+Add Pin To Net: Unknown Pin: Pin SW1-4
+Added Pin To Net: NetName=NetC2_2 Pin=U2-5
+Added Pin To Net: NetName=NetC2_2 Pin=U2-6
+Added Pin To Net: NetName=NetC2_2 Pin=U2-7
+Added Pin To Net: NetName=NetC2_2 Pin=U3-8
+Change Net Name : Old Net Name=Net*_1 New Net Name=VBUS
+Change Net Name : Old Net Name=Net*_2 New Net Name=VBAT
+Change Net Name : Old Net Name=NetC2_2 New Net Name=+3V3
+Change Net Name : Old Net Name=NetC6_2 New Net Name=RESET
+Change Net Name : Old Net Name=NetJ3_1 New Net Name=RXD
+Change Net Name : Old Net Name=NetJ5_2 New Net Name=GPIO0
+Change Net Name : Old Net Name=NetJ6_1 New Net Name=DTR
+Change Net Name : Old Net Name=NetJ6_2 New Net Name=RTS
+Change Net Name : Old Net Name=NetR7_1 New Net Name=BT6
+Change Net Name : Old Net Name=NetR9_1 New Net Name=BT2
+Change Net Name : Old Net Name=NetR10_1 New Net Name=BT4
+Change Net Name : Old Net Name=NetR11_1 New Net Name=BT3
+Change Net Name : Old Net Name=NetR12_1 New Net Name=D_LED
+Change Net Name : Old Net Name=NetR20_1 New Net Name=LEVEL_BAT
+Added Pin To Net: NetName=BT1 Pin=R6-1
+Added Pin To Net: NetName=BT1 Pin=U4-16
+Added Net: Name=BT1
+Added Pin To Net: NetName=NetR23_1 Pin=R23-1
+Added Pin To Net: NetName=NetR23_1 Pin=U4-41
+Added Net: Name=NetR23_1
+Added Pin To Net: NetName=TXD Pin=J3-2
+Added Pin To Net: NetName=TXD Pin=R23-2
+Added Pin To Net: NetName=TXD Pin=U2-20
+Added Net: Name=TXD
+Added Member To Class: ClassName=ESP32-PICO-D4-MCU Member=Component C11 1uF
+Added Member To Class: ClassName=ESP32-PICO-D4-MCU Member=Component C12 0.1uF
+Added Member To Class: ClassName=ESP32-PICO-D4-MCU Member=Component C13 0.1uF
+Added Member To Class: ClassName=ESP32-PICO-D4-MCU Member=Component C14 0.1uF
+Added Member To Class: ClassName=POWER-BATTERY Member=Component C15 0.1uF
+Added Member To Class: ClassName=SERIAL-CHIP Member=Component C16 1uF
+Added Member To Class: ClassName=SERIAL-CHIP Member=Component C17 0.1uF
+Add Class Member: Failed to add class member : Component D2 DIO-TVS-4V-LXES15AAA1-153
+Add Class Member: Failed to add class member : Component D3 DIO-TVS-4V-LXES15AAA1-153
+Added Member To Class: ClassName=ESP32-PICO-D4-MCU Member=Component R22 10K
+Added Member To Class: ClassName=ESP32-PICO-D4-MCU Member=Component R23 510R
+Add Class Member: Failed to add class member : Component SW1 SW_TACTILE_PTS645SM43SMTR92LFS
+Added Room: Name=ESP32-PICO-D4-MCU
+Added Room: Name=POWER-BATTERY
+Added Room: Name=RESET-SWITCHES
+Added Room: Name=SERIAL-CHIP

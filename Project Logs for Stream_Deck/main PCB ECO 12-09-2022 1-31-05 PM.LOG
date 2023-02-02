@@ -1,0 +1,53 @@
+Change Component Designator: OldDesignator= NewDesignator=MH4
+Change Component Designator: OldDesignator=MH? NewDesignator=MH1
+Change Component Designator: OldDesignator=MH? NewDesignator=MH2
+Change Component Designator: OldDesignator=MH? NewDesignator=MH3
+Added Component: Designator=J3(CON3_100_40D72_TH_ST-MALE)
+Add component (AddParameter): Name = "Alternate Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "TH-CON"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "RKI-1140"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier-1"; Value = "SP ROAD"; VariantName = "[No Variations]"
+Added Component: Designator=P1(CON2_100_43D62_TH_ST)
+Add component (AddParameter): Name = "Alternate Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "TH-CON"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Samtec"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier-1"; Value = "SP ROAD"; VariantName = "[No Variations]"
+Added Component: Designator=P2(CON2_100_43D62_TH_ST)
+Add component (AddParameter): Name = "Alternate Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "TH-CON"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Samtec"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier-1"; Value = "SP ROAD"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=J3-3
+Added Pin To Net: NetName=NetC6_2 Pin=P1-1
+Added Pin To Net: NetName=NetQ1_1 Pin=P2-1
+Added Pin To Net: NetName=NetQ1_2 Pin=P2-2
+Change Net Name : Old Net Name=NetQ1_1 New Net Name=NetP2_1
+Change Net Name : Old Net Name=NetQ1_2 New Net Name=NetP2_2
+Added Pin To Net: NetName=NetJ3_1 Pin=J3-1
+Added Pin To Net: NetName=NetJ3_1 Pin=U2-21
+Added Pin To Net: NetName=NetJ3_1 Pin=U4-40
+Added Net: Name=NetJ3_1
+Added Pin To Net: NetName=NetJ3_2 Pin=J3-2
+Added Pin To Net: NetName=NetJ3_2 Pin=U2-20
+Added Pin To Net: NetName=NetJ3_2 Pin=U4-41
+Added Net: Name=NetJ3_2
+Added Pin To Net: NetName=NetP1_2 Pin=P1-2
+Added Pin To Net: NetName=NetP1_2 Pin=Q2-3
+Added Pin To Net: NetName=NetP1_2 Pin=U4-23
+Added Net: Name=NetP1_2
+Added Member To Class: ClassName=POWER-REG Member=Component J3 3X1 BERG STRIP
+Added Member To Class: ClassName=Debugger-reset Member=Component MH1 Mounting Hole
+Added Member To Class: ClassName=Debugger-reset Member=Component MH2 Mounting Hole
+Added Member To Class: ClassName=Debugger-reset Member=Component MH3 Mounting Hole
+Added Member To Class: ClassName=POWER-REG Member=Component P1 BERSTICK 2.5MM, MALE
+Added Member To Class: ClassName=POWER-REG Member=Component P2 BERSTICK 2.5MM, MALE
+Added Room: Name=Debugger-reset
+Added Room: Name=ESP32-PICO-D4-MCU
+Added Room: Name=POWER-REG
+Added Room: Name=POWER_REG_SELECT

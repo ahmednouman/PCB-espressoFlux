@@ -1,0 +1,46 @@
+Added Component: Designator=DS1(LED_0805)
+Add component (AddParameter): Name = "Alternate Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "0805"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Vishay Lite-On"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "LTST-C171TBKT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number-1"; Value = "LTST-C171TBKT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier-1"; Value = "SP ROAD"; VariantName = "[No Variations]"
+Added Component: Designator=R2(RES_0805)
+Add component (AddParameter): Name = "Alternate Part Number-1"; Value = "WR08X1002FTL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "0805"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "CTS"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "WR08X1002FTL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number-1"; Value = "WR08X1002FTL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier-1"; Value = "SIRICOM"; VariantName = "[No Variations]"
+Added Component: Designator=R3(RES_0805)
+Add component (AddParameter): Name = "Alternate Part Number-1"; Value = "WR08X1000FTL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "0805"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Walsin"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "WR08X1000FTL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number-1"; Value = "WR08X1000FTL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier-1"; Value = "SIRICOM"; VariantName = "[No Variations]"
+Added Component: Designator=S2(Button8014X17N)
+Add component (AddParameter): Name = "Creator"; Value = "R Kanjee"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Date Created"; Value = "25 February 2015"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "C & K"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part No."; Value = "B3F1000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS Stock No."; Value = "516-255"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "State"; Value = "Normaly Open"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=DS1-K
+Added Pin To Net: NetName=3V3+ Pin=R2-2
+Added Pin To Net: NetName=GND Pin=S2-2
+Added Pin To Net: NetName=NetDS1_A Pin=DS1-A
+Added Pin To Net: NetName=NetDS1_A Pin=R3-2
+Added Net: Name=NetDS1_A
+Added Pin To Net: NetName=NetR2_1 Pin=R2-1
+Added Pin To Net: NetName=NetR2_1 Pin=S2-1
+Added Pin To Net: NetName=NetR2_1 Pin=U4-15
+Added Net: Name=NetR2_1
+Added Pin To Net: NetName=NetR3_1 Pin=R3-1
+Added Pin To Net: NetName=NetR3_1 Pin=U4-12
+Added Net: Name=NetR3_1
+Added Member To Class: ClassName=main Member=Component DS1 LED BLUE
+Added Member To Class: ClassName=main Member=Component R2 10K
+Added Member To Class: ClassName=main Member=Component R3 100R
+Added Member To Class: ClassName=main Member=Component S2 Button Tactile Switch, NO 0.05 A 0.8mm
+Added Room: Name=main

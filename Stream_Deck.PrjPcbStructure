@@ -1,0 +1,6 @@
+Record=TopLevelDocument|FileName=Block-Diagram.SchDoc|SheetNumber=5
+Record=NoMainPathDocument|SourceDocument=Block-Diagram.SchDoc|FileName=ESP32-PICO-D4-MCU.SchDoc|SheetNumber=1
+Record=NoMainPathDocument|SourceDocument=Block-Diagram.SchDoc|FileName=POWER-BATTERY.SchDoc|SheetNumber=2
+Record=NoMainPathDocument|SourceDocument=Block-Diagram.SchDoc|FileName=POWER-BUDGET.SchDoc|SheetNumber=6
+Record=NoMainPathDocument|SourceDocument=Block-Diagram.SchDoc|FileName=RESET-SWITCHES.SchDoc|SheetNumber=3
+Record=NoMainPathDocument|SourceDocument=Block-Diagram.SchDoc|FileName=SERIAL-CHIP.SchDoc|SheetNumber=4

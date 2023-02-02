@@ -1,0 +1,14 @@
+Added Component: Designator=P3(CON2_100_43D62_TH_ST)
+Add component (AddParameter): Name = "Alternate Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "TH-CON"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Samtec"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier-1"; Value = "SP ROAD"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=Net*_1 Pin=P3-1
+Added Pin To Net: NetName=NetC2_2 Pin=P3-2
+Added Member To Class: ClassName=POWER-REG Member=Component P3 BERSTICK 2.5MM, MALE
+Added Room: Name=Debugger-reset
+Added Room: Name=ESP32-PICO-D4-MCU
+Added Room: Name=POWER-REG
+Added Room: Name=POWER_REG_SELECT

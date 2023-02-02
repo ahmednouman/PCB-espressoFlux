@@ -1,0 +1,5 @@
+Added Member To Class: ClassName=POWER-REG Member=Component C1 0.1uF
+Added Member To Class: ClassName=POWER-REG Member=Component U2 IC_CP2104-F03-GM
+Added Room: Name=Debugger-reset
+Added Room: Name=ESP32-PICO-D4-MCU
+Added Room: Name=POWER-REG

@@ -1,0 +1,58 @@
+Added Component: Designator=J3(CON3_probing_1.25mm)
+Add component (AddParameter): Name = "Alternate Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "TH-CON"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Crimp Part Number"; Value = "653153128130"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "WURTH"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "653003114822"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mating Part Number"; Value = "653003113322"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number-1"; Value = "653003114822"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier-1"; Value = "WURTH"; VariantName = "[No Variations]"
+Added Component: Designator=J4(CON2_probing_1.25mm)
+Add component (AddParameter): Name = "Alternate Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "TH-CON"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Crimp Part Number"; Value = "653153128130"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "JST"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "653002114822"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mating Part Number"; Value = "653002113322"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number-1"; Value = "653002114822"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier-1"; Value = "WURTH"; VariantName = "[No Variations]"
+Added Component: Designator=J5(CON2_probing_1.25mm)
+Add component (AddParameter): Name = "Alternate Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "TH-CON"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Crimp Part Number"; Value = "653153128130"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "JST"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "653002114822"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mating Part Number"; Value = "653002113322"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number-1"; Value = "653002114822"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier-1"; Value = "WURTH"; VariantName = "[No Variations]"
+Added Component: Designator=J6(CON2_probing_1.25mm)
+Add component (AddParameter): Name = "Alternate Part Number-1"; Value = "NA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case/Package"; Value = "TH-CON"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Crimp Part Number"; Value = "653153128130"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "JST"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "653002114822"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mating Part Number"; Value = "653002113322"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number-1"; Value = "653002114822"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier-1"; Value = "WURTH"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetJ3_1 Pin=J3-1
+Added Pin To Net: NetName=NetJ3_2 Pin=J3-2
+Added Pin To Net: NetName=GND Pin=J3-3
+Added Pin To Net: NetName=Net*_1 Pin=J4-1
+Added Pin To Net: NetName=NetC2_2 Pin=J4-2
+Added Pin To Net: NetName=NetC6_2 Pin=J5-1
+Added Pin To Net: NetName=NetP2_1 Pin=J6-1
+Added Pin To Net: NetName=NetP2_2 Pin=J6-2
+Change Net Name : Old Net Name=NetP2_1 New Net Name=NetJ6_1
+Change Net Name : Old Net Name=NetP2_2 New Net Name=NetJ6_2
+Added Pin To Net: NetName=NetJ5_2 Pin=J5-2
+Added Pin To Net: NetName=NetJ5_2 Pin=Q2-3
+Added Pin To Net: NetName=NetJ5_2 Pin=U4-23
+Added Net: Name=NetJ5_2
+Added Member To Class: ClassName=POWER-REG Member=Component J3 1.25MM STARIGHT
+Added Member To Class: ClassName=POWER-REG Member=Component J4 653002114822
+Added Member To Class: ClassName=POWER-REG Member=Component J5 653002114822
+Added Member To Class: ClassName=POWER-REG Member=Component J6 653002114822
+Added Room: Name=Debugger-reset
+Added Room: Name=ESP32-PICO-D4-MCU
+Added Room: Name=POWER-REG
+Added Room: Name=POWER_REG_SELECT
