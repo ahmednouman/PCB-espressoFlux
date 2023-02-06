@@ -1,8 +1,0 @@
-Change Component Footprint: Designator=* Old Footprint=BS250FTA New Footprint=P_channelMos_AO3401A
-Change Component Comment : Designator=* Old Comment=IC_PMOS_BS250FTA New Comment=MOSFET-P-30V-4A-AO3401A
-Change Component Designator: OldDesignator=* NewDesignator=Q3
-Change Net Name : Old Net Name=Net*_3 New Net Name=NetQ3_3
-Added Room: Name=ESP32-PICO-D4-MCU
-Added Room: Name=POWER-BATTERY
-Added Room: Name=RESET-SWITCHES
-Added Room: Name=SERIAL-CHIP

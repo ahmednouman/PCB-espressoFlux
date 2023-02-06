@@ -1,0 +1,654 @@
+
+
+#include <BLEDevice.h>
+#include <BLEUtils.h>
+#include <BLEServer.h>
+#include <BLEAdvertising.h>
+
+#include <FastLED.h>
+
+#include "esp_err.h"
+#include "esp_pm.h"
+#include "driver/timer.h"
+
+#define BTN_PRESS 0
+#define BTN_RELEASE 1
+#define BTN_HOLD 2
+
+#define SERVICE_UUID        "4fafc201-1fb5-459e-8fcc-c5c9c331914b"
+#define CHARACTERISTIC_UUID "beb5483e-36e1-4688-b7f5-ea07361b26a8"
+#define ONBOARD_LED 32
+#define ONBOARD_SWITCH 26
+#define BLETIMEOUT 5*60 //Seconds
+
+#define LED_PIN     32
+#define NUM_LEDS    1
+#define BRIGHTNESS  100
+#define LED_TYPE    WS2812
+#define COLOR_ORDER GRB
+CRGB leds[NUM_LEDS];
+#define UPDATES_PER_SECOND 100
+
+#define ADCPIN 14
+
+int adcValue;
+float voltValue;
+float v_bat;
+
+int charge_pin = 32;
+int charge_stat = 0;
+int usb_detect = 27;
+int usb_adc;
+float usb_volt_div;
+float usb_volt;
+
+bool usbDetectFlag = false;
+
+const int button_1 = 25; 
+const int button_2 = 19; 
+const int button_3 = 22; 
+const int button_4 = 26; 
+const int button_5 = 15; 
+const int button_6 = 4; 
+
+int buttonState_1 = 1;
+int buttonState_2 = 1;
+int buttonState_3 = 1;
+int buttonState_4 = 1;
+int buttonState_5 = 1;
+int buttonState_6 = 1;
+
+int lastButtonState_1 = 1; 
+int lastButtonState_2 = 1; 
+int lastButtonState_3 = 1; 
+int lastButtonState_4 = 1; 
+int lastButtonState_5 = 1; 
+int lastButtonState_6 = 1;
+ 
+int startPressed = 0;    
+int endPressed = 0;      
+int holdTime = 0;        
+int idleTime = 0;        
+
+bool btnHoldFlag = false;
+
+unsigned long current_time;
+unsigned long prev_time = 0;
+unsigned long time_diff;
+
+unsigned long bat_sample_interval = 10000;
+
+const TProgmemPalette16 myRedWhiteBluePalette_p PROGMEM =
+{
+    CRGB::Red,
+    CRGB::Gray, // 'white' is too bright compared to red and blue
+    CRGB::Blue,
+    CRGB::Black,
+    
+    CRGB::Red,
+    CRGB::Gray,
+    CRGB::Blue,
+    CRGB::Black,
+    
+    CRGB::Red,
+    CRGB::Red,
+    CRGB::Gray,
+    CRGB::Gray,
+    CRGB::Blue,
+    CRGB::Blue,
+    CRGB::Black,
+    CRGB::Black
+};
+
+CRGBPalette16 currentPalette = RainbowColors_p; 
+TBlendType currentBlending = LINEARBLEND;
+
+bool bluetoothConnectFlag = false;
+
+BLECharacteristic *pCharacteristic;
+BLEServer *pServer;
+BLEService *pService;
+
+uint8_t value[1] = {0};
+volatile bool deviceConnected = false;
+volatile bool buttonPressed = false;
+
+esp_pm_config_esp32_t pm_config = {
+  .max_freq_mhz = 80, // e.g. 80, 160, 240
+  .min_freq_mhz = 40, // e.g. 40
+  .light_sleep_enable = true,
+};
+
+hw_timer_t * timer = NULL;
+portMUX_TYPE timerMux = portMUX_INITIALIZER_UNLOCKED;
+
+void resetTimer(){
+  portENTER_CRITICAL_ISR(&timerMux);
+  timerRestart(timer);
+  portEXIT_CRITICAL_ISR(&timerMux);
+}
+
+class MyServerCallbacks: public BLEServerCallbacks {
+  void onConnect(BLEServer* pServer) {
+    deviceConnected = true;
+    resetTimer();
+  };
+
+  void onDisconnect(BLEServer* pServer) {
+    deviceConnected = false;
+    BLEDevice::startAdvertising();
+    resetTimer();
+  };
+};
+
+class MyCallbacks: public BLECharacteristicCallbacks {
+  void onWrite(BLECharacteristic *pCharacteristic) {
+    Serial.println("OnWrite");
+  
+    std::string value = pCharacteristic->getValue();
+  
+    if (value.length() > 0) {
+      Serial.println("*********");
+      Serial.print("New value: ");
+      for (int i = 0; i < value.length(); i++)
+        Serial.print(value[i]);
+  
+      Serial.println();
+      Serial.println("*********");
+    }
+  }
+};
+
+void IRAM_ATTR switchPressToggle(){
+  if (deviceConnected) {
+    if (digitalRead(ONBOARD_SWITCH) == LOW) {
+        digitalWrite(ONBOARD_LED, HIGH);
+        buttonPressed = true;
+        value[0] = 1;
+        pCharacteristic->setValue(&value[0], 1);
+        pCharacteristic->notify();
+    } else {
+        digitalWrite(ONBOARD_LED, LOW);
+        buttonPressed = false;
+        value[0] = 0;
+        pCharacteristic->setValue(&value[0], 1);
+        pCharacteristic->notify();
+    }
+  } else {
+    digitalWrite(ONBOARD_LED, LOW);
+    BLEDevice::startAdvertising();
+  }
+  resetTimer();
+}
+
+void button_push_blink(){
+  leds[0] = CRGB::Green;
+  FastLED.show();
+  delay(200);
+
+  leds[0] = CRGB::Black;
+  FastLED.show();
+  //delay(500);
+}
+
+void button_hold_blink(){
+  for(int i=0; i < 10; i++){
+    leds[0] = CRGB::Green;
+    FastLED.show();
+    delay(100);
+  
+    leds[0] = CRGB::Black;
+    FastLED.show();
+    delay(100);    
+  }
+}
+
+void usb_detect_led(){
+  for(int i=0; i < 10; i++){
+    leds[0] = CRGB::Red;
+    FastLED.show();
+    delay(100);
+  
+    leds[0] = CRGB::Black;
+    FastLED.show();
+    delay(100);    
+  }
+}
+
+void low_battery_led(){
+  leds[0] = CRGB::Red;
+  FastLED.show();
+  delay(500);
+
+  leds[0] = CRGB::Black;
+  FastLED.show();
+  delay(500);
+}
+
+void bluetooth_connected_led(){
+  for(int i=0; i< 20; i++){
+      leds[0] = CRGB::Blue;
+      FastLED.show();
+      delay(100);
+
+      leds[0] = CRGB::Black;
+      FastLED.show();
+      delay(100);   
+  }
+}
+
+void no_bluetooth_connection_led(uint8_t colorIndex){
+  uint8_t brightness = 255;
+  leds[0] = ColorFromPalette( currentPalette, colorIndex, brightness, currentBlending);
+  FastLED.show();
+  FastLED.delay(1000 / UPDATES_PER_SECOND);
+}
+
+int updateButtonState(int buttonState) {
+  Serial.println(buttonState);
+  // the button has been just pressed
+  if (buttonState == LOW) {
+      Serial.println("Pressed");
+      //startPressed = millis();
+      idleTime = startPressed - endPressed;
+      return BTN_PRESS;
+  } 
+  return BTN_RELEASE;
+//  else {
+//        Serial.println("Released");
+//        endPressed = millis();
+//        holdTime = endPressed - startPressed;
+//        Serial.println(holdTime);
+//        if(holdTime >= 3000){
+//          return BTN_HOLD;
+//        }else{
+//          return BTN_RELEASE;
+//        }
+//  }
+}
+
+void setup() {
+  Serial.begin(115200);
+
+  delay( 1000 ); // power-up safety delay
+  FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection( TypicalLEDStrip );
+  FastLED.setBrightness(  BRIGHTNESS );
+  
+
+  pinMode(button_1, INPUT);
+  pinMode(button_2, INPUT);
+  pinMode(button_3, INPUT);
+  pinMode(button_4, INPUT);
+  pinMode(button_5, INPUT);
+  pinMode(button_6, INPUT);
+
+  pinMode(charge_pin, INPUT);
+  
+  pinMode(ONBOARD_LED, OUTPUT);
+  digitalWrite(ONBOARD_LED, LOW);
+
+  esp_ble_tx_power_set(ESP_BLE_PWR_TYPE_DEFAULT, ESP_PWR_LVL_N12); 
+  esp_ble_tx_power_set(ESP_BLE_PWR_TYPE_ADV, ESP_PWR_LVL_N12);
+  esp_ble_tx_power_set(ESP_BLE_PWR_TYPE_SCAN ,ESP_PWR_LVL_N12);
+  
+  esp_pm_configure(&pm_config);
+  esp_sleep_pd_config(ESP_PD_DOMAIN_RTC_PERIPH, ESP_PD_OPTION_ON);
+  esp_sleep_enable_ext0_wakeup(GPIO_NUM_26, LOW);
+  timer = timerBegin(0, 80, true);
+  timerAttachInterrupt(timer, &onTimer, true);
+  timerAlarmWrite(timer, 1000000*BLETIMEOUT, true);
+  timerAlarmEnable(timer);
+  
+  //Initialise button state
+  pinMode(ONBOARD_SWITCH, INPUT);
+  switchPressToggle();
+  attachInterrupt(digitalPinToInterrupt(ONBOARD_SWITCH), switchPressToggle, CHANGE);
+  
+  BLEDevice::init("espressoFluxV2 Device");
+  pServer = BLEDevice::createServer();
+  pServer->setCallbacks(new MyServerCallbacks());
+  pService = pServer->createService(SERVICE_UUID);
+
+  pCharacteristic = pService->createCharacteristic(
+                                         CHARACTERISTIC_UUID,
+                                         BLECharacteristic::PROPERTY_READ |
+                                         BLECharacteristic::PROPERTY_WRITE |
+                                         BLECharacteristic::PROPERTY_NOTIFY
+                                       );
+
+  pCharacteristic->setValue("");
+  pCharacteristic->setCallbacks(new MyCallbacks());
+  pService->start();
+  
+  BLEAdvertising *pAdvertising = BLEDevice::getAdvertising();
+  pAdvertising->addServiceUUID(SERVICE_UUID);
+  pAdvertising->setScanResponse(true);
+  pAdvertising->setMinPreferred(0x06);
+  
+  BLEAdvertisementData pAdvertisementData = BLEAdvertisementData();
+  pAdvertisementData.setManufacturerData((std::string)"espresso Displays");
+  pAdvertisementData.setName((std::string)"espressoFluxV2");
+  pAdvertising->setAdvertisementData(pAdvertisementData);
+  
+  BLEDevice::startAdvertising();
+
+}
+
+
+
+void loop() {
+
+   usb_adc = analogRead(usb_detect);
+   usb_volt_div = ((usb_adc * 3.3) / 4095);
+   if(usb_volt_div >= 2.2 && !usbDetectFlag){
+         usb_detect_led();
+         usbDetectFlag = true;
+   }
+   else if(usb_volt_div < 2.2){
+     usbDetectFlag = false;
+   }
+    
+  if(deviceConnected){
+    if(!bluetoothConnectFlag){
+      bluetooth_connected_led();
+      bluetoothConnectFlag = true;
+    }
+
+    buttonState_1 = digitalRead(button_1);
+    buttonState_2 = digitalRead(button_2);
+    buttonState_3 = digitalRead(button_3);
+    buttonState_4 = digitalRead(button_4);
+    buttonState_5 = digitalRead(button_5);
+    buttonState_6 = digitalRead(button_6);
+
+    if (buttonState_1 != lastButtonState_1) { 
+       int btn_status = updateButtonState(buttonState_1);
+       if(btn_status == BTN_PRESS){
+          button_push_blink();
+          startPressed = millis();
+          lastButtonState_1 = buttonState_1;
+       } 
+       while(btn_status == BTN_PRESS){
+           buttonState_1 = digitalRead(button_1);
+           endPressed = millis();
+           holdTime = endPressed - startPressed;
+           if (buttonState_1 != lastButtonState_1){
+              char txString[8] = {'S','P','1'};
+      
+              pCharacteristic->setValue(txString);
+              pCharacteristic->notify();
+              Serial.println("sent value " + String(txString));  
+
+              lastButtonState_1 = buttonState_1;
+              break;
+           } 
+           if(holdTime >= 2500){
+              button_hold_blink();
+              char txString[8] = {'S','H','1'};
+      
+              pCharacteristic->setValue(txString);
+              pCharacteristic->notify();
+              Serial.println("sent value " + String(txString));
+              while(buttonState_1 != HIGH){
+                  buttonState_1 = digitalRead(button_1);
+              }
+              lastButtonState_1 = buttonState_1;
+              break;
+           }
+       }
+    }
+            
+    if (buttonState_2 != lastButtonState_2) { 
+       int btn_status = updateButtonState(buttonState_2);
+       if(btn_status == BTN_PRESS){
+          button_push_blink();
+          startPressed = millis();
+          lastButtonState_2 = buttonState_2;
+       } 
+       while(btn_status == BTN_PRESS){
+           buttonState_2 = digitalRead(button_2);
+           endPressed = millis();
+           holdTime = endPressed - startPressed;
+           if (buttonState_2 != lastButtonState_2){
+              char txString[8] = {'S','P','2'};
+      
+              pCharacteristic->setValue(txString);
+              pCharacteristic->notify();
+              Serial.println("sent value " + String(txString));  
+
+              lastButtonState_2 = buttonState_2;
+              break;
+           } 
+           if(holdTime >= 2500){
+              button_hold_blink();
+              char txString[8] = {'S','H','2'};
+      
+              pCharacteristic->setValue(txString);
+              pCharacteristic->notify();
+              Serial.println("sent value " + String(txString));
+              while(buttonState_2 != HIGH){
+                  buttonState_2 = digitalRead(button_2);
+              }
+              lastButtonState_2 = buttonState_2;
+              break;
+           }
+       }
+    }
+
+    
+
+    if (buttonState_3 != lastButtonState_3) { 
+       int btn_status = updateButtonState(buttonState_3);
+       if(btn_status == BTN_PRESS){
+          button_push_blink();
+          startPressed = millis();
+          lastButtonState_3 = buttonState_3;
+       } 
+       while(btn_status == BTN_PRESS){
+           buttonState_3 = digitalRead(button_3);
+           endPressed = millis();
+           holdTime = endPressed - startPressed;
+           if (buttonState_3 != lastButtonState_3){
+              char txString[8] = {'S','P','3'};
+      
+              pCharacteristic->setValue(txString);
+              pCharacteristic->notify();
+              Serial.println("sent value " + String(txString));  
+
+              lastButtonState_3 = buttonState_3;
+              break;
+           } 
+           if(holdTime >= 2500){
+              button_hold_blink();
+              char txString[8] = {'S','H','3'};
+      
+              pCharacteristic->setValue(txString);
+              pCharacteristic->notify();
+              Serial.println("sent value " + String(txString));
+              while(buttonState_3 != HIGH){
+                  buttonState_3 = digitalRead(button_3);
+              }
+              lastButtonState_3 = buttonState_3;
+              break;
+           }
+       }
+    }
+
+    if (buttonState_4 != lastButtonState_4) { 
+       int btn_status = updateButtonState(buttonState_4);
+       if(btn_status == BTN_PRESS){
+          button_push_blink();
+          startPressed = millis();
+          lastButtonState_4 = buttonState_4;
+       } 
+       while(btn_status == BTN_PRESS){
+           buttonState_4 = digitalRead(button_4);
+           endPressed = millis();
+           holdTime = endPressed - startPressed;
+           if (buttonState_4 != lastButtonState_4){
+              char txString[8] = {'S','P','4'};
+      
+              pCharacteristic->setValue(txString);
+              pCharacteristic->notify();
+              Serial.println("sent value " + String(txString));  
+
+              lastButtonState_4 = buttonState_4;
+              break;
+           } 
+           if(holdTime >= 2500){
+              button_hold_blink();
+              char txString[8] = {'S','H','4'};
+      
+              pCharacteristic->setValue(txString);
+              pCharacteristic->notify();
+              Serial.println("sent value " + String(txString));
+              while(buttonState_4 != HIGH){
+                  buttonState_4 = digitalRead(button_4);
+              }
+              lastButtonState_4 = buttonState_4;
+              break;
+           }
+       }
+    }
+
+    if (buttonState_5 != lastButtonState_5) { 
+       int btn_status = updateButtonState(buttonState_5);
+       if(btn_status == BTN_PRESS){
+          button_push_blink();
+          startPressed = millis();
+          lastButtonState_5 = buttonState_5;
+       } 
+       while(btn_status == BTN_PRESS){
+           buttonState_5 = digitalRead(button_5);
+           endPressed = millis();
+           holdTime = endPressed - startPressed;
+           if (buttonState_5 != lastButtonState_5){
+              char txString[8] = {'S','P','5'};
+      
+              pCharacteristic->setValue(txString);
+              pCharacteristic->notify();
+              Serial.println("sent value " + String(txString));  
+
+              lastButtonState_5 = buttonState_5;
+              break;
+           } 
+           if(holdTime >= 2500){
+              button_hold_blink();
+              char txString[8] = {'S','H','5'};
+      
+              pCharacteristic->setValue(txString);
+              pCharacteristic->notify();
+              Serial.println("sent value " + String(txString));
+              while(buttonState_5 != HIGH){
+                  buttonState_5 = digitalRead(button_5);
+              }
+              lastButtonState_5 = buttonState_5;
+              break;
+           }
+       }
+    }
+
+    if (buttonState_6 != lastButtonState_6) { 
+       int btn_status = updateButtonState(buttonState_6);
+       if(btn_status == BTN_PRESS){
+          button_push_blink();
+          startPressed = millis();
+          lastButtonState_6 = buttonState_6;
+       } 
+       while(btn_status == BTN_PRESS){
+           buttonState_6 = digitalRead(button_6);
+           endPressed = millis();
+           holdTime = endPressed - startPressed;
+           if (buttonState_6 != lastButtonState_6){
+              char txString[8] = {'S','P','6'};
+      
+              pCharacteristic->setValue(txString);
+              pCharacteristic->notify();
+              Serial.println("sent value " + String(txString));  
+
+              lastButtonState_6 = buttonState_6;
+              break;
+           } 
+           if(holdTime >= 2500){
+              button_hold_blink();
+              char txString[8] = {'S','H','6'};
+      
+              pCharacteristic->setValue(txString);
+              pCharacteristic->notify();
+              Serial.println("sent value " + String(txString));
+              while(buttonState_6 != HIGH){
+                  buttonState_6 = digitalRead(button_6);
+              }
+              lastButtonState_6 = buttonState_6;
+              break;
+           }
+       }
+    }
+
+
+
+
+    current_time = millis();
+    time_diff = current_time - prev_time;
+//    Serial.print("battery time interval = "); 
+//    Serial.println(time_diff);
+
+    if(time_diff >= bat_sample_interval){
+        adcValue = analogRead(ADCPIN);
+        voltValue = ((adcValue * 3.3) / 4095);
+        Serial.println(adcValue);
+        Serial.println(voltValue);
+        v_bat = ((voltValue * (159000 + 420000)) / 159000) + 0.5; 
+        char txString[24];
+        char buf[36] = {'V','B'};
+        dtostrf(v_bat, 1, 2, txString);
+
+        strcat(buf, txString);
+
+        pCharacteristic->setValue(buf);
+        pCharacteristic->notify();
+        Serial.println("sent value " + String(buf));
+
+        prev_time = current_time;
+
+        charge_stat = digitalRead(charge_pin);
+        char txString2[24];
+        char buf2[36] = {'C','B'};
+
+        dtostrf(charge_stat, 1, 2, txString2);
+
+        strcat(buf2, txString2);
+
+        pCharacteristic->setValue(buf2);
+        pCharacteristic->notify();
+        Serial.println("sent value " + String(buf2));
+        
+        char txString3[24];
+        char buf3[36] = {'U','S','B'};
+        dtostrf(usb_volt_div, 1, 2, txString3);
+
+        strcat(buf3, txString3);
+
+        pCharacteristic->setValue(buf3);
+        pCharacteristic->notify();
+        Serial.println("sent value " + String(buf3));
+    }
+
+    delay(150);
+    
+  }else{
+      static uint8_t startIndex = 0;
+      startIndex = startIndex + 1;
+      no_bluetooth_connection_led(startIndex);
+      bluetoothConnectFlag = false;
+  }
+ // delay(150);
+}
+
+void onTimer() {
+  portENTER_CRITICAL_ISR(&timerMux);
+  deviceConnected = false;
+  timerAlarmDisable(timer);
+  esp_light_sleep_start();
+  portEXIT_CRITICAL_ISR(&timerMux);
+}

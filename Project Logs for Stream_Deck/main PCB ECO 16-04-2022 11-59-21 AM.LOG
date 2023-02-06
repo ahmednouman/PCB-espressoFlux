@@ -1,5 +1,0 @@
-Change Component Footprint: Designator=U1 Old Footprint=SOT-223_M New Footprint=SOT-223_M
-Added Component: Designator=ANT1(Fractus_Antenna_NN01-102)
-Added Pin To Net: NetName=NetANT1_1 Pin=ANT1-1
-Added Member To Class: ClassName=main Member=Component ANT1 Fractus Antenna
-Added Room: Name=main

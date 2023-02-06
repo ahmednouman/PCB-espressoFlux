@@ -1,8 +1,0 @@
-Removed Pin From Net: NetName=NetR7_1 Pin=U4-11
-Removed Pin From Net: NetName=NetR10_1 Pin=U4-13
-Added Pin To Net: NetName=NetR10_1 Pin=U4-11
-Added Pin To Net: NetName=NetR7_1 Pin=U4-13
-Added Room: Name=Debugger-reset
-Added Room: Name=ESP32-PICO-D4-MCU
-Added Room: Name=POWER-REG
-Added Room: Name=POWER_REG_SELECT
